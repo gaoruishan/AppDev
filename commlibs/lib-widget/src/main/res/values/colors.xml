@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- Common colors -->
+    <color name="black">#ff000000</color>
+    <color name="black_p">#88000000</color>
+    <color name="black_transprent">#44000000</color>
+    <color name="black_half_transprent">#20000000</color>
+    <color name="black_map_transprent">#50000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="white_p">#88ffffff</color>
+    <color name="white_disable">#44ffffff</color>
+    <color name="red">#ffff2524</color>
+    <color name="red_p">#ffe62120</color>
+    <color name="blue">#ff18acf3</color>
+    <color name="blue_p">#ff1699db</color>
+    <color name="green">#ff0fc00c</color>
+    <color name="green_p">#880fc00c</color>
+    <color name="dialog_blue">#ff0480be</color>
+    <color name="dialog_grey">#ffc8ccd4</color>
+    <color name="half_alpha_white">#80ffffff</color>
+    <color name="transparency">#00ffffff</color>
+
+    <!-- Base color for theme -->
+    <color name="base_theme_highlight">#ff19abf3</color>
+    <color name="base_theme_normal">#ffb4b4b4</color>
+    <color name="base_bg">#ffffffff</color>
+    <color name="base_grey_bg">#fff4f4f4</color>
+    <color name="base_grey_line">#ffdbdbdb</color>
+    <color name="base_text_title">#ff000000</color>
+    <color name="base_text_summary">#ff919293</color>
+
+    <!-- text color -->
+    <color name="text_color_gray_8">#888888</color>
+    <color name="text_color_gray">#555555</color>
+    <color name="text_color_black">#5d5d5d</color>
+    <color name="text_color_dark_blue">#036eb8</color>
+    <color name="text_color_white_80">#ccffffff</color>
+    <color name="text_white">#ffffff</color>
+    <color name="text_black">#000000</color>
+    <color name="text_black_light">#4a494a</color>
+    <color name="bg_alph">#f8f8f8</color>
+
+    <!--分割线颜色-->
+    <color name="color_line_light">#bababa</color>
+</resources>

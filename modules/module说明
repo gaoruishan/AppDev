@@ -1,0 +1,20 @@
+
+1,module创建!!! 尽量选择进入文件磁盘,直接改名复制,并在setting.gradle中添加
+
+
+2,module创建文件必须有前缀:
+    例如:ui-test模块 创建类和资源已test_前缀
+
+3,关于butterknife插件:
+    (1)gitHub地址:
+    https://github.com/JakeWharton/butterknife
+    (2)ui-test中build已经配置了,对应module可参考
+    (3)ButterKnife的简单使用:
+        (1)绑定一下当前的对象ButterKnife.bind(this);
+        (2)不支持private，static修饰
+        (3)视图:@BindView(R.id.view)
+                View view;
+          点击事件: @OnClick(R.id.fab)
+                   public void onClick(View view){
+                          .....
+                   }

@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+//添加输出aar
+if (isLibRes.toBoolean()) {
+    apply from: '../../build_copy.gradle'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
+    compile "com.android.support:support-annotations:${rootProject.ext.annotationsVersion}"
+    testCompile "junit:junit:${rootProject.ext.junitVersion}"
+}

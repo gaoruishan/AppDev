@@ -1,0 +1,75 @@
+apply plugin: 'com.android.library'
+//添加输出aar
+if (isLibBase.toBoolean()) {
+    apply from: '../../build_copy.gradle'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //添加依赖
+    compile project(':commlibs:lib-widget')
+    compile project(':commlibs:lib-utils')
+    compile project(':commlibs:lib-res')
+
+    //基本依赖
+    testCompile "junit:junit:${rootProject.ext.junitVersion}"
+    compile "com.android.support:support-annotations:${rootProject.ext.annotationsVersion}"
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
+    compile "com.android.support:recyclerview-v7:${rootProject.ext.supportLibraryVersion}"
+    compile "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintVersion}"
+    compile "com.google.code.gson:gson:${rootProject.ext.gsonVersion}"
+    compile "com.alibaba:fastjson:${rootProject.ext.fastJsonVersion}"
+    compile 'com.android.support:multidex:1.0.0'
+    //glide图片加载
+    compile "com.github.bumptech.glide:glide:${rootProject.ext.glideVersion}"
+    configurations.all {//glide报错
+        resolutionStrategy.force "com.android.support:support-annotations:${rootProject.ext.annotationsVersion}"
+    }
+    //智能刷新布局
+    compile "com.scwang.smartrefresh:SmartRefreshLayout:${rootProject.ext.smartrefreshVersion}"
+    compile "com.scwang.smartrefresh:SmartRefreshHeader:${rootProject.ext.smartrefreshVersion}"
+
+    //retrofit
+    compile "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    compile ("com.squareup.retrofit2:converter-gson:${rootProject.ext.converterGsonVersion}"){
+        transitive = true;
+        exclude module: 'gson'
+    }
+    compile ("com.squareup.retrofit2:converter-simplexml:${rootProject.ext.rconverterSimplexmlVersion}"){
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'stax', module: 'stax'
+    }
+
+    //okhttp
+    compile "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttpVersion}"
+    compile "com.squareup.okio:okio:${rootProject.ext.okioVersion}"
+    //rxandroid
+    compile "io.reactivex:rxandroid:${rootProject.ext.rrxandroidVersion}"
+    compile "io.reactivex:rxjava:${rootProject.ext.rxjavaVersion}"
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+}

@@ -1,0 +1,96 @@
+if (isMudulesTest.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+    //butterknife插件
+//    apply plugin: 'com.jakewharton.butterknife'
+    //添加输出aar
+    apply from: '../../build_copy.gradle'
+}
+//buildscript {
+//    repositories {
+//        mavenCentral()
+//    }
+//    dependencies {
+//        classpath 'com.jakewharton:butterknife-gradle-plugin:8.8.1'
+//    }
+//}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        if (isMudulesTest.toBoolean()) {
+            applicationId "com.grs.apptest"
+        } else {
+            //资源前缀
+//            resourcePrefix "test_"
+        }
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    sourceSets.main {
+        // MIM or Not MIM
+        if (isMudulesTest.toBoolean()) {
+            manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+        } else {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java {
+                exclude 'debug/**'
+            }
+        }
+
+        jni.srcDirs = []
+        //LOCAL_LDFLAGS += -fuse-ld=bfd
+        //jni.srcDirs 'src/main/jni'
+        jniLibs.srcDir 'src/main/libs'
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    if (isMudulesTest.toBoolean()) {
+        compile project(':bizs:biz-test')
+    } else {
+        compile(name: 'lib-base', ext: 'aar')
+        compile(name: 'lib-res', ext: 'aar')
+        compile(name: 'lib-utils', ext: 'aar')
+        compile(name: 'lib-widget', ext: 'aar')
+    }
+
+    //添加butterknife视图
+//    compile 'com.jakewharton:butterknife:8.8.1'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
+    compile "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintVersion}"
+    compile "com.android.support:support-annotations:${rootProject.ext.annotationsVersion}"
+    testCompile "junit:junit:${rootProject.ext.junitVersion}"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    configurations.all {
+        resolutionStrategy.force "com.android.support:support-annotations:${rootProject.ext.annotationsVersion}"
+    }
+}

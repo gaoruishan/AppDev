@@ -1,0 +1,27 @@
+include 'libs'
+
+//公共依赖-输出aar
+include ':commlibs',
+        ':commlibs:lib-base',
+        ':commlibs:lib-utils',
+//        ':commlibs:lib-image',
+        ':commlibs:lib-res',
+        ':commlibs:lib-widget'
+
+//第三方依赖库-输出aar
+include ':libraries',
+        ':libraries:xutils'
+
+//各个模块业务
+include ':bizs',
+        ':bizs:biz-test'
+
+//各个模块UI-输出aar
+include ':modules',
+        ':modules:ui-test',
+        ':modules:ui-test2',
+        ':modules:ui-test3'
+
+//存放多个APP
+include ':apps',
+        ':apps:myapplication'

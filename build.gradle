@@ -1,0 +1,65 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        //butterknife插件
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.8.1'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.3'
+        classpath 'com.mcxiaoke.packer-ng:plugin:2.0.0'
+    }
+}
+
+allprojects {
+    repositories {
+        flatDir {
+            //每个仓库都可引用libs
+            dirs project(':libs').file('./')
+        }
+        jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url "https://dl.google.com/dl/android/maven2/"}
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    // Sdk and tools
+    minSdkVersion = 15
+    targetSdkVersion = 25
+    compileSdkVersion = 25
+    buildToolsVersion = "25.0.3"
+
+    // App dependencies
+    supportLibraryVersion = "25.3.1"
+    junitVersion = "4.12"
+
+    glideVersion = '4.2.0'
+    glinVersion = "3.1"
+    okclientVersion = "3.1"
+    fastJsonVersion = "1.1.56.android"
+
+    constraintVersion = "1.0.2"
+    annotationsVersion = "25.3.1"
+    espressoVersion = "2.2.2"
+    smartrefreshVersion = "1.0.3-alpha-6"
+    gsonVersion = "2.6.2"
+    retrofitVersion = "2.0.2"
+    converterGsonVersion = "2.1.0"
+    rconverterSimplexmlVersion = "2.0.1"
+    okhttpVersion = "3.3.0"
+    okioVersion = "1.7.0"
+    interceptorVersion = "3.2.0"
+    rrxandroidVersion = "1.1.0"
+    rxjavaVersion = "1.1.0"
+}
