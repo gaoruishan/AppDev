@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="myCorDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/dialog_corner_bg</item> <!-- 背景透明 -->
+        <item name="android:windowNoTitle">true</item> <!-- 没有标题 -->
+        <item name="android:backgroundDimEnabled">true</item> <!-- 背景模糊 -->
+    </style>
+    <style name="style_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">5dp</item>
+        <item name="android:background">#cccccc</item>
+    </style>
+    <style name="DialogButtonText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#3F9FE0</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@null</item>
+    </style>
+</resources>

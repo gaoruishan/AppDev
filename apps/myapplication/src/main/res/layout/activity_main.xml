@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.grs.myapplication.MainActivity">
-    <Button
-        android:id="@+id/btn_ui_test"
+    <!--主内容-->
+    <FrameLayout
+        android:id="@+id/main_content_view"
         android:layout_width="match_parent"
-        android:text="ui-test"
-        android:layout_height="50dp"/>
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <!--底部导航-->
+    <com.grs.myapplication.view.XBottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_gravity="bottom"
+        android:background="@color/colorCard"
+        app:elevation="@dimen/dp_16"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
+        app:layout_behavior="@string/bye_burger_bottom_behavior"
+        app:menu="@menu/bottom_navigation_main"
+    />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

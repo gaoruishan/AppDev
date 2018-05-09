@@ -4,9 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AppDev.iml" filepath="$PROJECT_DIR$/AppDev.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/apps.iml" filepath="$PROJECT_DIR$/apps/apps.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bizs/biz-test/biz-test.iml" filepath="$PROJECT_DIR$/bizs/biz-test/biz-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bizs/biz-home/biz-home.iml" filepath="$PROJECT_DIR$/bizs/biz-home/biz-home.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bizs/biz-knowledge/biz-knowledge.iml" filepath="$PROJECT_DIR$/bizs/biz-knowledge/biz-knowledge.iml" />
       <module fileurl="file://$PROJECT_DIR$/bizs/bizs.iml" filepath="$PROJECT_DIR$/bizs/bizs.iml" />
       <module fileurl="file://$PROJECT_DIR$/commlibs/commlibs.iml" filepath="$PROJECT_DIR$/commlibs/commlibs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/commlibs/lib-base/lib-base.iml" filepath="$PROJECT_DIR$/commlibs/lib-base/lib-base.iml" />
       <module fileurl="file://$PROJECT_DIR$/commlibs/lib-res/lib-res.iml" filepath="$PROJECT_DIR$/commlibs/lib-res/lib-res.iml" />
       <module fileurl="file://$PROJECT_DIR$/commlibs/lib-utils/lib-utils.iml" filepath="$PROJECT_DIR$/commlibs/lib-utils/lib-utils.iml" />
@@ -15,9 +17,10 @@
       <module fileurl="file://$PROJECT_DIR$/libs/libs.iml" filepath="$PROJECT_DIR$/libs/libs.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/modules.iml" filepath="$PROJECT_DIR$/modules/modules.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/myapplication/myapplication.iml" filepath="$PROJECT_DIR$/apps/myapplication/myapplication.iml" />
-      <module fileurl="file://$PROJECT_DIR$/modules/ui-test/ui-test.iml" filepath="$PROJECT_DIR$/modules/ui-test/ui-test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/modules/ui-test2/ui-test2.iml" filepath="$PROJECT_DIR$/modules/ui-test2/ui-test2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/modules/ui-test3/ui-test3.iml" filepath="$PROJECT_DIR$/modules/ui-test3/ui-test3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/ui-home/ui-home.iml" filepath="$PROJECT_DIR$/modules/ui-home/ui-home.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/ui-knowledge/ui-knowledge.iml" filepath="$PROJECT_DIR$/modules/ui-knowledge/ui-knowledge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/ui-navigation/ui-navigation.iml" filepath="$PROJECT_DIR$/modules/ui-navigation/ui-navigation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/ui-project/ui-project.iml" filepath="$PROJECT_DIR$/modules/ui-project/ui-project.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/xutils/xutils.iml" filepath="$PROJECT_DIR$/libraries/xutils/xutils.iml" />
     </modules>
   </component>

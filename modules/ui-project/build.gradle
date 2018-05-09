@@ -1,0 +1,76 @@
+if (isMudulesProject.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+    //添加输出aar
+    apply from: '../../build_copy.gradle'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        if (isMudulesProject.toBoolean()) {
+            applicationId "com.grs.appproject"
+        } else {
+            //资源前缀
+//            resourcePrefix "test_"
+        }
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    sourceSets.main {
+        // MIM or Not MIM
+        if (isMudulesProject.toBoolean()) {
+            manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+        } else {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java {
+                exclude 'debug/**'
+            }
+        }
+
+        jni.srcDirs = []
+        //LOCAL_LDFLAGS += -fuse-ld=bfd
+        //jni.srcDirs 'src/main/jni'
+        jniLibs.srcDir 'src/main/libs'
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    // 业务依赖
+    api project(':common')
+    // 业务依赖
+    api project(':bizs:biz-home')
+
+    api "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
+    api "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintVersion}"
+    api "com.android.support:support-annotations:${rootProject.ext.annotationsVersion}"
+    testImplementation "junit:junit:${rootProject.ext.junitVersion}"
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
+    configurations.all {
+        resolutionStrategy.force "com.android.support:support-annotations:${rootProject.ext.annotationsVersion}"
+    }
+}

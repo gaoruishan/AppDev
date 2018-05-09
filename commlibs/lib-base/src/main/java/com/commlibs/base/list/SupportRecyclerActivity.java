@@ -24,7 +24,7 @@ public abstract class SupportRecyclerActivity<T> extends BaseActivity implements
 
 
     @Override
-    protected void setup(@Nullable Bundle savedInstanceState) {
+    public void onCreateActivity(@Nullable Bundle savedInstanceState) {
         mListCompat = ListCompat.with(this, getWindow().getDecorView());
     }
 

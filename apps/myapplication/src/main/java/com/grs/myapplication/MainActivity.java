@@ -1,23 +1,49 @@
 package com.grs.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
-import com.grs.apptest.TestMainActivity;
+import com.commlibs.base.BaseActivity;
+import com.grs.myapplication.view.IBottomNavigationView;
+import com.grs.myapplication.view.XBottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity implements IBottomNavigationView {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		findViewById(R.id.btn_ui_test).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this, TestMainActivity.class));
-			}
-		});
+	public int getContentViewId() {
+		return R.layout.activity_main;
+	}
+
+	@Override
+	public void onCreateActivity(Bundle savedInstanceState) {
+		XBottomNavigationView mBottomNavigationView = f(R.id.bottom_navigation_view);
+		mBottomNavigationView.disableShiftMode();
+		mBottomNavigationView.setIBottomNavigationViewListener(this);
+		mBottomNavigationView.initFragment(getSupportFragmentManager());
+	}
+
+
+	@Override
+	public void onPointerCaptureChanged(boolean hasCapture) {
+
+	}
+
+	@Override
+	public void switchMainPager() {
+
+	}
+
+	@Override
+	public void switchKnowledgeHierarchy() {
+
+	}
+
+	@Override
+	public void switchNavigation() {
+
+	}
+
+	@Override
+	public void switchProject() {
+
 	}
 }

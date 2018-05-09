@@ -4,7 +4,6 @@ include 'libs'
 include ':commlibs',
         ':commlibs:lib-base',
         ':commlibs:lib-utils',
-//        ':commlibs:lib-image',
         ':commlibs:lib-res',
         ':commlibs:lib-widget'
 
@@ -14,13 +13,18 @@ include ':libraries',
 
 //各个模块业务
 include ':bizs',
-        ':bizs:biz-test'
+        ':bizs:biz-home',
+        ':bizs:biz-knowledge'
+
+//app公共的依赖
+include ':common'
 
 //各个模块UI-输出aar
 include ':modules',
-        ':modules:ui-test',
-        ':modules:ui-test2',
-        ':modules:ui-test3'
+        ':modules:ui-home',
+        ':modules:ui-knowledge',
+        ':modules:ui-navigation',
+        ':modules:ui-project'
 
 //存放多个APP
 include ':apps',

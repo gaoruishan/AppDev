@@ -9,9 +9,9 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -22,26 +22,37 @@ android {
     lintOptions {
         abortOnError false
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dexOptions {
+        jumboMode true
+        javaMaxHeapSize "4g"
+    }
 }
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile(name: 'lib-res', ext: 'aar')
-    compile(name: 'lib-widget', ext: 'aar')
-    compile(name: 'lib-utils', ext: 'aar')
-    if (!isMudulesTest.toBoolean()) {
-        compile project(':modules:ui-test')
-    }else {
-        compile(name: 'ui-test', ext: 'aar')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    // 首页
+    if (!isMudulesHome.toBoolean()) {
+        api project(':modules:ui-home')
+    } else {
+        implementation(name: 'ui-home', ext: 'aar')
+    }
+    // 知识
+    if (!isMudulesKnowledge.toBoolean()) {
+        api project(':modules:ui-knowledge')
+    } else {
+        implementation(name: 'ui-knowledge', ext: 'aar')
     }
 
-    androidTestCompile("com.android.support.test.espresso:espresso-core:${rootProject.ext.espressoVersion}", {
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:${rootProject.ext.espressoVersion}", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
-    compile "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintVersion}"
-    compile "com.android.support:support-annotations:${rootProject.ext.annotationsVersion}"
-    testCompile "junit:junit:${rootProject.ext.junitVersion}"
-
+    api "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
+    api "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintVersion}"
+    api "com.android.support:support-annotations:${rootProject.ext.annotationsVersion}"
+    testImplementation "junit:junit:${rootProject.ext.junitVersion}"
 }

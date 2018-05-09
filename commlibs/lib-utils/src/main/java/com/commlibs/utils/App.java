@@ -39,9 +39,6 @@ public class App {
 
 	public static  Application INSTANCE;
 
-	public static  class GlobalApp extends Application{
-
-	}
 
 	public static Uri ENV_URI;
 	public static final int ENV_RELEASE = 0;

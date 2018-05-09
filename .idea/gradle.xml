@@ -11,19 +11,22 @@
             <option value="$PROJECT_DIR$/apps" />
             <option value="$PROJECT_DIR$/apps/myapplication" />
             <option value="$PROJECT_DIR$/bizs" />
-            <option value="$PROJECT_DIR$/bizs/biz-test" />
+            <option value="$PROJECT_DIR$/bizs/biz-home" />
+            <option value="$PROJECT_DIR$/bizs/biz-knowledge" />
             <option value="$PROJECT_DIR$/commlibs" />
             <option value="$PROJECT_DIR$/commlibs/lib-base" />
             <option value="$PROJECT_DIR$/commlibs/lib-res" />
             <option value="$PROJECT_DIR$/commlibs/lib-utils" />
             <option value="$PROJECT_DIR$/commlibs/lib-widget" />
+            <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/xutils" />
             <option value="$PROJECT_DIR$/libs" />
             <option value="$PROJECT_DIR$/modules" />
-            <option value="$PROJECT_DIR$/modules/ui-test" />
-            <option value="$PROJECT_DIR$/modules/ui-test2" />
-            <option value="$PROJECT_DIR$/modules/ui-test3" />
+            <option value="$PROJECT_DIR$/modules/ui-home" />
+            <option value="$PROJECT_DIR$/modules/ui-knowledge" />
+            <option value="$PROJECT_DIR$/modules/ui-navigation" />
+            <option value="$PROJECT_DIR$/modules/ui-project" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

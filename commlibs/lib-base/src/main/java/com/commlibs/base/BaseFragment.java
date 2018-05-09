@@ -21,21 +21,8 @@ import com.commlibs.utils.helper.ViewHelper;
  */
 
 public abstract class BaseFragment extends Fragment {
-
-	@Nullable
-	@Override
-	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View rootView = inflater.inflate(getLayoutId(), container, false);
-		setup(rootView, savedInstanceState);
-		return rootView;
-	}
-
-	protected abstract int getLayoutId();
-
-
-	protected void setup(View rootView, @Nullable Bundle savedInstanceState) {
-
-	}
+	
+	protected long mCurrentMs = System.currentTimeMillis();
 
 	protected <T extends View> T f(View rootView, @IdRes int resId) {
 		return ViewHelper.f(rootView, resId);
@@ -63,11 +50,6 @@ public abstract class BaseFragment extends Fragment {
 		startActivity(new Intent(action));
 	}
 
-	//Class类
-	public void startActivity(Class clazz) {
-		startActivity(new Intent(this.getActivity(), clazz));
-	}
-
 	@Override
 	public void startActivity(Intent intent) {
 		try {
@@ -75,5 +57,27 @@ public abstract class BaseFragment extends Fragment {
 		} catch (ActivityNotFoundException e) {
 			LogUtil.e("Activity", "No Activity found to handle intent " + intent);
 		}
+	}
+
+	@Nullable
+	@Override
+	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		View rootView = inflater.inflate(getLayoutId(), container, false);
+		onCreateFragment(rootView, savedInstanceState);
+		return rootView;
+	}
+
+	protected abstract int getLayoutId();
+
+	protected abstract void onCreateFragment(View rootView, @Nullable Bundle savedInstanceState);
+
+	//Class类
+	public void startActivity(Class clazz) {
+		startActivity(new Intent(this.getActivity(), clazz));
+	}
+
+	//唯一ID
+	public String getIdentifier() {
+		return this.getClass().getName() + this.mCurrentMs;
 	}
 }

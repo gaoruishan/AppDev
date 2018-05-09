@@ -38,8 +38,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 		TAG = this.getClass().getSimpleName();
 		setContentView(getContentViewId());
 		AppManager.add(this);
-		setup(savedInstanceState);
+		onCreateActivity(savedInstanceState);
 	}
+
 	/**
 	 * 重写填充视图
 	 * @param layoutResID
@@ -55,11 +56,19 @@ public abstract class BaseActivity extends AppCompatActivity {
 			mContentContainer.addView(childView);
 			mActionBar = (ActionBar) view.findViewById(R.id.action_bar);
 			mActionBar.initDefaultActionBar(this);
-		}else {
+		} else {
 			super.setContentView(layoutResID);
 		}
 
 	}
+
+	@Override
+	protected void onDestroy() {
+		PresenterHelper.onDestoryed(this, BaseActivity.class);
+		AppManager.remove(this);
+		super.onDestroy();
+	}
+
 	/**
 	 * 获取setContentView布局
 	 * @return
@@ -67,10 +76,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 	public abstract int getContentViewId();
 
 	/**
+	 * 一般重写,进行初始设置
+	 * @param savedInstanceState
+	 */
+	public abstract void onCreateActivity(Bundle savedInstanceState);
+	/**
 	 * 是否打开带ActionBar
 	 * @return
 	 */
-	public boolean isOpenActionBar(){
+	protected boolean isOpenActionBar() {
 		return false;
 	}
 
@@ -84,31 +98,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 		return ViewHelper.f(this, resId);
 	}
 
-	/**
-	 * 一般重写,进行初始设置
-	 * @param savedInstanceState
-	 */
-	protected void setup(@Nullable Bundle savedInstanceState) {
-	}
-
-
 	@Override
 	public void finish() {
 		hideSoftKeyboard();
 		super.finish();
 		AppManager.remove(this);
-	}
-
-	@Override
-	protected void onDestroy() {
-		PresenterHelper.onDestoryed(this, BaseActivity.class);
-		AppManager.remove(this);
-		super.onDestroy();
-	}
-
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
 	}
 
 	/**
@@ -120,6 +114,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 			imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
 					InputMethodManager.HIDE_NOT_ALWAYS);
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
 	}
 
 	/**
@@ -149,15 +148,16 @@ public abstract class BaseActivity extends AppCompatActivity {
 		}
 	}
 
+	//Class类
+	public void startActivity(Class clazz) {
+		startActivity(new Intent(this, clazz));
+	}
+
 	//action
 	public void startActivity(String action) {
 		startActivity(new Intent(action));
 	}
 
-	//Class类
-	public void startActivity(Class clazz) {
-		startActivity(new Intent(this, clazz));
-	}
 	//唯一ID
 	public String getIdentifier() {
 		return this.getClass().getName() + this.mCurrentMs;

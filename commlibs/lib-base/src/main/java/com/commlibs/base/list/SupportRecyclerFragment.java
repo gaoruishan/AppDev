@@ -24,7 +24,7 @@ public abstract class SupportRecyclerFragment<T> extends BaseFragment implements
     private ListCompat<T> mListCompat;
 
     @Override
-    protected void setup(View rootView, @Nullable Bundle savedInstance) {
+    protected void onCreateFragment(View rootView, @Nullable Bundle savedInstance) {
         mListCompat = ListCompat.with(this, rootView);
     }
 
