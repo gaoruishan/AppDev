@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.grs.myapplication.MainActivity">
+    <!--头部-->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="@dimen/dp_0">
+
+        <!--<include layout="@layout/common_toolbar" />-->
+        <include layout="@layout/common_toolbar_no_scroll"/>
+    </android.support.design.widget.AppBarLayout>
     <!--主内容-->
     <FrameLayout
         android:id="@+id/main_content_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    <!--滚动 悬浮按钮 关键:layout_behavior和CoordinatorLayout布局-->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/main_floating_action_btn"
+        style="@style/style_float_btn"
+        android:layout_marginBottom="@dimen/dp_60"
+        android:layout_marginRight="@dimen/dp_16"
+        android:src="@mipmap/icon_up_arrow"
+        app:layout_behavior="@string/scale_down_show_behavior" />
+
     <!--底部导航-->
     <com.grs.myapplication.view.XBottomNavigationView
         android:id="@+id/bottom_navigation_view"
@@ -23,8 +42,7 @@
         app:elevation="@dimen/dp_16"
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"
-        app:layout_behavior="@string/bye_burger_bottom_behavior"
         app:menu="@menu/bottom_navigation_main"
     />
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

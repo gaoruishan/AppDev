@@ -22,7 +22,5 @@
     <string name="no">否</string>
     <string name="reload">重新加载</string>
 
-    <string name="bye_burger_bottom_behavior">com.wingsofts.byeburgernavigationview.ByeBurgerBottomBehavior</string>
-    <string name="bye_burger_float_behavior">com.wingsofts.byeburgernavigationview.ByeBurgerFloatButtonBehavior</string>
-    <string name="bye_burger_title_behavior">com.wingsofts.byeburgernavigationview.ByeBurgerTitleBehavior</string>
+    <string name="scale_down_show_behavior">com.commlibs.libwidget.behavior.ScaleDownShowBehavior</string>
 </resources>

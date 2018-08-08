@@ -1,5 +1,5 @@
 task copyAAR(type:Copy) {
-    from './build/outputs/aar'
+    from './build/outputs/aar/'
     into "../../libs"
     include(project.name + '-release.aar')
     rename(project.name + '-release.aar', project.name + ".aar")
@@ -12,7 +12,7 @@ assemble.doLast {
 //方式二
 //assemble << {
 //    def files = file("./build/outputs/aar/").listFiles()
-//    def targetDir = "../../libss/"
+//    def targetDir = "../../libs/"
 //    def targetName = "-release.aar"
 //    files.each { item ->
 //        if (item.getName().endsWith(targetName)) {

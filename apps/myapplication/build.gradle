@@ -39,13 +39,15 @@ dependencies {
     if (!isMudulesHome.toBoolean()) {
         api project(':modules:ui-home')
     } else {
-        implementation(name: 'ui-home', ext: 'aar')
+        api(name: 'ui-home', ext: 'aar')
+        api(name: 'biz-home', ext: 'aar')
     }
     // 知识
     if (!isMudulesKnowledge.toBoolean()) {
         api project(':modules:ui-knowledge')
     } else {
-        implementation(name: 'ui-knowledge', ext: 'aar')
+        api(name: 'ui-knowledge', ext: 'aar')
+        api(name: 'biz-knowledge', ext: 'aar')
     }
 
     androidTestImplementation("com.android.support.test.espresso:espresso-core:${rootProject.ext.espressoVersion}", {

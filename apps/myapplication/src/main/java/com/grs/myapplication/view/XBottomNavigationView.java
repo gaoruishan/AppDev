@@ -100,7 +100,7 @@ public class XBottomNavigationView extends BottomNavigationView {
 				item.setShiftingMode(false);
 				// set once again checked value, so view will be updated
 				//noinspection RestrictedApi
-//                item.setChecked(item.getItemData().isChecked());
+                item.setChecked(item.getItemData().isChecked());
 			}
 		} catch (NoSuchFieldException e) {
 			Log.e("BNVHelper", "Unable to get shift mode field", e);
@@ -125,7 +125,9 @@ public class XBottomNavigationView extends BottomNavigationView {
 	public void switchFragment(int itemId) {
 
 		boolean isNull = supportFragmentManager == null || mFragmentMap == null;
-		if (isNull) return;
+		if (isNull) {
+			return;
+		}
 
 		FragmentTransaction ft = supportFragmentManager.beginTransaction();
 		Fragment targetFg = mFragmentMap.get(itemId);

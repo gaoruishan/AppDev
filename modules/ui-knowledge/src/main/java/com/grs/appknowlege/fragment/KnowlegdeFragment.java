@@ -5,12 +5,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.commlibs.base.BaseFragment;
 import com.commlibs.base.adapter.XBaseAdapter;
 import com.commlibs.base.adapter.XViewHolder;
 import com.commlibs.base.annotations.AnnotionProcessor;
 import com.commlibs.base.annotations.Autowired;
+import com.commlibs.libwidget.addresspicker.AddressHelper;
+import com.commlibs.libwidget.addresspicker.AddressPickerView;
 import com.grs.appknowlege.R;
 import com.grs.knowledge.bean.KnowledgeTreeBean;
 import com.grs.knowledge.presenter.KnowledgePresenter;
@@ -43,6 +46,9 @@ public class KnowlegdeFragment extends BaseFragment implements IKnowledgeView {
 		return fragment;
 	}
 
+	public void onAddress(final View view) {
+
+	}
 	@Override
 	protected int getLayoutId() {
 		return R.layout.fragment_knowlegde;
@@ -52,6 +58,23 @@ public class KnowlegdeFragment extends BaseFragment implements IKnowledgeView {
 	protected void onCreateFragment(View rootView, @Nullable Bundle savedInstanceState) {
 		mPresenter.getKnowledgeTree();
 		listView = f(rootView, R.id.list);
+		final TextView tv_address = f(rootView, R.id.tv_address);
+		tv_address.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				AddressHelper.showDialog(KnowlegdeFragment.this.getActivity(), new AddressPickerView.ISelectAddressListener() {
+					@Override
+					public void cancel() {
+
+					}
+
+					@Override
+					public void onSelectAddress(String address) {
+						tv_address.setText(address);
+					}
+				});
+			}
+		});
 	}
 
 	@Override
